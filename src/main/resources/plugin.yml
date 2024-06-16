@@ -1,0 +1,8 @@
+name: ScriptPulse
+version: '${version}'
+main: cn.dzdstudo.mc.scriptpulse.ScriptPulse
+api-version: '1.20'
+softdepend: [Geyser-Spigot,floodgate]
+authors: [HaiPaya]
+description: Minecraft Java 脚本引擎
+website: https://git-dev.dzdstudo.cn/HaiPaya/ScriptPulse
