@@ -34,8 +34,8 @@ public class Player {
      *
      * @return UUID
      */
-    public UUID getUUID() {
-        return this.player.getUniqueId();
+    public String getUUID() {
+        return this.player.getUniqueId().toString();
     }
 
     /**
