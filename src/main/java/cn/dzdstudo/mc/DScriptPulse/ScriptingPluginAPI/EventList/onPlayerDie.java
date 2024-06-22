@@ -126,7 +126,7 @@ public class onPlayerDie {
     }
 
     /**
-     * 设置玩家重生时应达到的等级。
+     * 设置玩家重生时应达到的等级
      * @param level 等级
      */
     public void setNewLevel(int level) {
@@ -134,7 +134,7 @@ public class onPlayerDie {
     }
 
     /**
-     * 设置玩家重生时应拥有的总经验值。
+     * 设置玩家重生时应拥有的总经验值
      * @param totalExp 总经验值
      */
     public void setNewTotalExp(int totalExp) {
