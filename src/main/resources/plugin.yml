@@ -1,6 +1,6 @@
-name: ScriptPulse
+name: DScriptPulse
 version: '${version}'
-main: cn.dzdstudo.mc.scriptpulse.ScriptPulse
+main: cn.dzdstudo.mc.DScriptPulse.DScriptPulse
 api-version: '1.20'
 softdepend: [Geyser-Spigot,floodgate]
 authors: [HaiPaya]

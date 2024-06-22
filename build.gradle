@@ -24,12 +24,12 @@ repositories {
 dependencies {
     compileOnly 'org.geysermc.geyser:api:2.2.0-SNAPSHOT'
     compileOnly 'org.geysermc.floodgate:api:2.2.2-SNAPSHOT'
-
     compileOnly "io.papermc.paper:paper-api:1.20.6-R0.1-SNAPSHOT"
 
-    implementation 'org.graalvm.sdk:graal-sdk:21.3.0'
-    implementation 'org.graalvm.js:js:21.3.0'
-    implementation 'org.graalvm.truffle:truffle-api:21.3.0'
+    implementation group: 'org.graalvm.sdk', name: 'graal-sdk', version: '24.0.1'
+    implementation group: 'org.graalvm.js', name: 'js', version: '23.0.4'
+    implementation group: 'org.graalvm.truffle', name: 'truffle-api', version: '24.0.1'
+    implementation group: 'org.graalvm.polyglot', name: 'polyglot', version: '24.0.1'
 }
 
 def targetJavaVersion = 21
@@ -59,7 +59,6 @@ processResources {
     }
 }
 
-// 自动打包依赖
 shadowJar {
     archiveBaseName.set(project.name)
     archiveClassifier.set('')
