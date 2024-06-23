@@ -3,6 +3,7 @@ package cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.plugin.PluginManager;
 import org.graalvm.polyglot.HostAccess;
 
 import java.util.List;
@@ -54,5 +55,21 @@ public class Minecraft {
      */
     public cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.Pos getPos(cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.World world, double x, double y, double z) {
         return new cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.Pos(new Location(Bukkit.getWorld(world.getName()), x, y, z));
+    }
+
+    /**
+     * 获取普通表单对象
+     *
+     * @return 表单对象
+     */
+    public cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.SimpleForm getSimpleForm() {
+        // 前置是否安装
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        boolean isGeyserLoaded = pluginManager.isPluginEnabled("Geyser-Spigot");
+        boolean isFloodgateLoaded = pluginManager.isPluginEnabled("Floodgate");
+        if(isGeyserLoaded && isFloodgateLoaded) {
+            return new cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.SimpleForm();
+        }
+        return null;
     }
 }
