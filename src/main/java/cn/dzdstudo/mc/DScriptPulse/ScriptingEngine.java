@@ -44,7 +44,7 @@ public class ScriptingEngine extends JavaPlugin {
         // 日志
         context.getBindings("js").putMember("logger", new cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.Logger(logger, pluginName));
         // Minecraft
-        context.getBindings("js").putMember("minecraft", new Minecraft());
+        context.getBindings("js").putMember("mc", new Minecraft());
         // 监听事件
         context.getBindings("js").putMember("listen", new Listen());
         // 命令系统
@@ -64,6 +64,6 @@ public class ScriptingEngine extends JavaPlugin {
                     + "() 位于 " + firstElement.getLineNumber() + " 行。");
         }
 
-        logger.info("脚本插件" + pluginName + "加载完成。");
+        logger.info("脚本插件 " + pluginName + " 加载完成。");
     }
 }

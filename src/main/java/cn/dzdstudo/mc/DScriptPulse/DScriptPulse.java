@@ -3,6 +3,7 @@ package cn.dzdstudo.mc.DScriptPulse;
 import cn.dzdstudo.mc.DScriptPulse.ScriptingPluginAPI.Listen;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -18,11 +19,30 @@ public final class DScriptPulse extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        logger.info("DScriptPulse 开始加载...");
+        logger.info("\n" +
+                "           .----------------. .----------------. .----------------. \n" +
+                "           | .--------------. | .--------------. | .--------------. |\n" +
+                "           | |  ________    | | |    _______   | | |   ______     | |\n" +
+                "           | | |_   ___ `.  | | |   /  ___  |  | | |  |_   __ \\   | |\n" +
+                "           | |   | |   `. \\ | | |  |  (__ \\_|  | | |    | |__) |  | |\n" +
+                "           | |   | |    | | | | |   '.___`-.   | | |    |  ___/   | |\n" +
+                "           | |  _| |___.' / | | |  |`\\____) |  | | |   _| |_      | |\n" +
+                "           | | |________.'  | | |  |_______.'  | | |  |_____|     | |\n" +
+                "           | |              | | |              | | |              | |\n" +
+                "           | '--------------' | '--------------' | '--------------' |\n" +
+                "            '----------------' '----------------' '----------------' ");
+        // 前置是否安装
+        PluginManager pluginManager = Bukkit.getPluginManager();
+        boolean isGeyserLoaded = pluginManager.isPluginEnabled("Geyser-Spigot");
+        boolean isFloodgateLoaded = pluginManager.isPluginEnabled("Floodgate");
+        if(!isGeyserLoaded || !isFloodgateLoaded) {
+            logger.warning("前置插件 Geyser-Spigot 和 Floodgate 未安装，部分功能将无法使用！");
+        }
 
         // 监听事件
         Bukkit.getPluginManager().registerEvents(new Listen(), this);
 
+        logger.info("开始加载脚本插件...");
         // 获取文件列表
         List<File> files = FileUtils.listFiles("plugins/");
 
@@ -49,7 +69,7 @@ public final class DScriptPulse extends JavaPlugin {
             }
             else {
                 // 插件文件损坏
-                logger.warning("插件 " + pluginName + " 的 plugin.yml 文件不存在。");
+                logger.warning("插件 " + pluginName + " 的 plugin.yml 文件不存在，无法加载。");
                 FileUtils.deleteFile(getDataFolder() + "/scriptsRuntime/" + pluginName);
                 return null;
             }
