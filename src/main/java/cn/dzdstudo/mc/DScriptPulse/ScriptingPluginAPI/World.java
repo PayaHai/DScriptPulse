@@ -15,6 +15,9 @@ public class World {
      */
     public World(String name) {
         this.world = Bukkit.getWorld(name);
+        if(this.world == null) {
+            throw new RuntimeException("世界不存在！");
+        }
     }
 
     /**
