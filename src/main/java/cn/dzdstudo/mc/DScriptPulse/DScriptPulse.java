@@ -50,14 +50,14 @@ public final class DScriptPulse extends JavaPlugin {
         Stream<File> scriptsPlugins = files.stream().filter(file -> file.getName().endsWith(".sar"));
 
         // 解压并获取 plugin.yml 内容
-        //FileUtils.clearDirectory(getDataFolder() + "/scriptsRuntime");
+        FileUtils.clearDirectory(getDataFolder() + "/scriptsRuntime");
         FileUtils.newFolder(getDataFolder() + "/scriptsRuntime/openhab-conf");
         Stream<YamlConfiguration> plugins = scriptsPlugins.map(file -> {
             String pluginName = file.getName().replace(".sar", "");
             String pluginPath = "plugins/" + file.getName();
 
             // 解压
-            //FileUtils.unzip(pluginPath, getDataFolder() + "/scriptsRuntime/" + pluginName);
+            FileUtils.unzip(pluginPath, getDataFolder() + "/scriptsRuntime/" + pluginName);
 
             File pluginYml = new File(getDataFolder() + "/scriptsRuntime/" + pluginName + "/plugin.yml");
 
